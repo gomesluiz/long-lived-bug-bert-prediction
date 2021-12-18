@@ -1,6 +1,6 @@
-# Bug Severity Predictor for Mozilla
+# Long-Lived Bug Classifier Based on BERT
 
-This repository contains code and associated files for deploying a bug severity predictor for Mozilla projects using Heroku.
+This repository contains code and associated files for deploying into Heroku of a long-lived bug classifier for Bugzilla projects.
 
 ## Project Overview
 
