@@ -1,0 +1,13 @@
+0-project-proposal/
+1-data-preparation/
+2-data-analysis/
+3-feature-engineering/
+4-predictive-modeling/
+5-project-report/
+data/raw/
+data/clean/
+data/cleaned/
+data/processed/
+jupyter.sh
+__pycache__
+README.md

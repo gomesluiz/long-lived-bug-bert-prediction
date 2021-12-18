@@ -1,0 +1,54 @@
+{% extends "bootstrap/base.html" %}
+{% import  "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Severity Predictor{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1>Bug Severity Predictor</h1>
+    </div>
+    <div class="page-body">
+        <form action="/" method="post" class="form" role="form">
+            {{ form.csrf_token }}
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            {{ wtf.form_field(form.bug_id, class='form-control') }}
+                        </div>
+                        <div class="col-md-4">
+                            <br/>
+                            <button type="submit" class="btn btn-primary ml-auto">Predict</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            {%if description %}
+                                <span><strong>Description:</strong></span><br/>
+                                <span>{{description}}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <img src="{{ url_for('static', filename=severity + '.svg') }}" class="w-30 h-30 img-thumbnail" >
+                    {% if severity != 'No-image' %}
+                        <hr/>
+                        <figcaption class="figure-caption text-right">Severity level: <span class="badge badge-primary">{{severity.capitalize()}}</span></figcaption>
+                    {% endif %}
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                {% for message in get_flashed_messages() %}
+                    <div class="alert alert-danger">
+                        <button type="button" class="close" data-dimiss="alert">&times;</button>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
